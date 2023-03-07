@@ -18,28 +18,43 @@ function Register() {
   }
 
   function handleSubmit(event) {
-    e.preventDefault();
+    event.preventDefault();
     // TODO : Panggil API untuk register
   }
 
   return (
-    <div>
-      <h1>Explore You Need</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="fullname">Fullname</label>
-          <input type="text" id="fullname" value={fullname} onChange={handleFullname} />
+    <div class="flex items-center justify-center bg-white">
+      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 text-black"><h3>Explore You Need</h3></div>
+          <div class="text-sm mb-2 text-black"><small>Create your credentials with your Email</small></div>
+          <form onSubmit={handleSubmit}>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="fullname">
+                Fullname
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white" id="fullname" type="text" placeholder="Fullname" value={fullname} onChange={handleFullname} />
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                Email
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white" id="email" type="email" placeholder="yourmail@domain.com" value={email} onChange={handleEmail} />
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Password
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white" id="password" type="password" placeholder="********" value={password} onChange={handlePassword} />
+            </div>
+            <div class="flex items-center justify-between">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Sign Up
+              </button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} onChange={handleEmail} />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} onChange={handlePassword} />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
+      </div>
     </div>
   );
 }
