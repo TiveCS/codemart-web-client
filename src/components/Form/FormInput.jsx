@@ -1,8 +1,13 @@
-export default function FormInput({ label, value, onChange }) {
+export default function FormInput({ id, name, label, type, placeholder, onChangeHandler }) {
+    function handleChange(event) {
+        event.preventDefault();
+        onChangeHandler(event.target.value);
+    }
+
     return (
         <div>
-            <label>{label}</label>
-            <input value={value} onChange={onChange} />
+            <label htmlFor={name}>{label}</label>
+            <input id={id} name={name} type={type} placeholder={placeholder} onChange={handleChange} />
         </div>
     );
 }
