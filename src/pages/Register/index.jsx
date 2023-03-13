@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FormInput from '../../components/Form/FormInput';
 
 function Register() {
   const [fullname, setFullname] = useState('');
@@ -26,18 +27,30 @@ function Register() {
     <div>
       <h1>Explore You Need</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="fullname">Fullname</label>
-          <input type="text" id="fullname" value={fullname} onChange={handleFullname} />
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} onChange={handleEmail} />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} onChange={handlePassword} />
-        </div>
+        <FormInput
+          id="fullname"
+          name="fullname"
+          label="Fullname"
+          type="text"
+          placeholder="Fullname"
+          onChangeHandler={handleFullname}
+        />  
+        <FormInput
+          id="email"
+          name="email"
+          label="Email"
+          type="email"
+          placeholder="Email"
+          onChangeHandler={handleEmail}
+        />
+        <FormInput
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          placeholder="Password"
+          onChangeHandler={handlePassword}
+        />
         <button type="submit">Sign Up</button>
       </form>
     </div>
