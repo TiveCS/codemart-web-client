@@ -1,44 +1,46 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '../../components/Button';
+import FormInput from '../../components/Forms/FormInput';
+import useInput from '../../hooks/useInput';
+import { register } from '../../utils/api';
 
 function Register() {
-  const [fullname, setFullname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, onEmailChangeHandler] = useInput('');
+  const [fullName, onFullNameChangeHandler] = useInput('');
+  const [password, onPasswordChangeHandler] = useInput('');
 
-  function handleFullname(event) {
-    setFullname(event.target.value);
-  }
 
-  function handleEmail(event) {
-    setEmail(event.target.value);
-  }
-
-  function handlePassword(event) {
-    setPassword(event.target.value);
-  }
-
-  function handleSubmit(event) {
+  async function handleSubmit(e) {
     e.preventDefault();
     // TODO : Panggil API untuk register
+    const data = await register({ email, fullName, password });
+
+    console.log(data);
   }
 
   return (
-    <div>
-      <h1>Explore You Need</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="fullname">Fullname</label>
-          <input type="text" id="fullname" value={fullname} onChange={handleFullname} />
+    <div className='h-full flex justify-center items-center'>
+      <form onSubmit={handleSubmit} className='mt-8 w-full flex flex-col gap-y-8 md:max-w-sm shadow-md border border-gray-200 px-4 py-4 md:px-8 md:py-8'>
+        <div className='text-center'>
+          <h1 className='text-2xl font-medium'>Explore Your Need</h1>
+          <p className='text-xs md:text-sm mt-1 text-gray-700'>Create your credentials with your Email</p>
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} onChange={handleEmail} />
+
+        <div className='grid gap-y-3'>
+          <FormInput name={'email'} type='email' label={'Email'} onChangeHandler={onEmailChangeHandler} placeholder='john@example.com' />
+          <FormInput name={'fullName'} type='text' label={'Full Name'} onChangeHandler={onFullNameChangeHandler} placeholder='John Doe' />
+          <FormInput name={'password'} type='password' label={'Password'} onChangeHandler={onPasswordChangeHandler} placeholder='••••••••••' />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} onChange={handlePassword} />
+
+        <div className='text-center flex flex-col gap-y-4'>
+          <Button type={'submit'} >
+            Sign Up
+          </Button>
+
+          <p className='text-xs md:text-sm'>Already have account? <Link to={'/login'}><span className='text-codemart-600'>Log In</span></Link></p>
         </div>
-        <button type="submit">Sign Up</button>
+
       </form>
     </div>
   );
