@@ -9,6 +9,7 @@ function Register() {
   const [email, onEmailChangeHandler] = useInput('');
   const [fullName, onFullNameChangeHandler] = useInput('');
   const [password, onPasswordChangeHandler] = useInput('');
+  const [isRegistered, setIsRegistered] = useState(false);
 
 
   async function handleSubmit(e) {
@@ -17,11 +18,13 @@ function Register() {
     const data = await register({ email, fullName, password });
 
     console.log(data);
+    setIsRegistered(true); // Mengubah nilai state isRegistered menjadi true setelah berhasil melakukan registrasi
   }
 
   return (
     <div className='h-full flex justify-center items-center'>
       <form onSubmit={handleSubmit} className='mt-8 w-full flex flex-col gap-y-8 md:max-w-sm shadow-md border border-gray-200 px-4 py-4 md:px-8 md:py-8'>
+      {isRegistered && <p>You have already register </p>} {/* Menampilkan pesan jika isRegistered bernilai true */}
         <div className='text-center'>
           <h1 className='text-2xl font-medium'>Explore Your Need</h1>
           <p className='text-xs md:text-sm mt-1 text-gray-700'>Create your credentials with your Email</p>
