@@ -7,7 +7,6 @@ const Login = () => {
     
     /* Run the command npm install react-icons to install the library in your project folder. */
 
-
     // Function to show/hide password
     const viewPassword = () => {
         if (passwordField.current.type === "password") {
