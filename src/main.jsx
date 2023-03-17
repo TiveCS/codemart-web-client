@@ -6,6 +6,7 @@ import './index.css';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 import UpdateProductPage from './pages/Products/Update';
+import Login from './pages/Login';
 import Register from './pages/Register';
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: 'products/sell',
         element: <UpdateProductPage />
+      },
+      {
+        path: 'login',
+        element: <Login />
       },
       {
         path: 'register',
