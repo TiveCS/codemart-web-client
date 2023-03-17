@@ -1,9 +1,15 @@
-import React from 'react'
-import Sell from './pages/Sell'
-import Login from './pages/Login'
+import { Outlet } from "react-router-dom"
+import Navbar from "./components/Navbar"
 
-export default function App() {
+function App() {
   return (
-    <Login />
+    <>
+      <Navbar />
+      <div className="App">
+        <main className="px-6 md:px-16 py-4">
+          <Outlet />
+        </main>
+      </div>
+    </>
   )
 }
