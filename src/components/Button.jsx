@@ -1,6 +1,6 @@
 import classNames from "classnames"
 
-export function Button({ children, className, style, onClick }) {
+export function Button({ children, className, style = 'primary', type = 'button', onClick }) {
 
     const classes = classNames({
         'btn-primary': style === 'primary',
@@ -9,7 +9,7 @@ export function Button({ children, className, style, onClick }) {
     });
 
     return (
-        <button className={(typeof className !== 'undefined' ? className : '') + ' btn ' + classes} onClick={onClick}>
+        <button type={type} className={(typeof className !== 'undefined' ? className : '') + ' btn ' + classes} onClick={onClick}>
             {children}
         </button>
     )

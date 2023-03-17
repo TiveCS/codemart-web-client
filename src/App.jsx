@@ -5,10 +5,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="App">
-        <main className="px-6 md:px-16 py-4">
-          <Outlet />
-        </main>
+      <div id="App" className="h-full flex-grow px-6 md:px-16 py-4">
+        <Outlet />
       </div>
     </>
   )
